@@ -1,0 +1,67 @@
+﻿@page
+@model Journal.Pages.Journals.IndexModel
+@{
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <h1 class="text-info">Journals</h1>
+        </div>
+        <div class="col-4">
+            <a asp-page="Create" class="btn btn-primary mt-3" type="submit">Create New Journal</a>
+        </div>
+    </div>
+    <div class="col-12 p-3 mt-3">
+        <form method="post">
+            @if (Model.JournalList.Count() > 0)
+            {
+            <table class="table-bordered table-dark table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            <label asp-for="JournalList.FirstOrDefault().EntryName" class="p-2"></label>
+                        </th>
+                        <th>
+                            <label asp-for="JournalList.FirstOrDefault().Date" class="p-2"></label>
+                        </th>
+                        <th>
+                            <label asp-for="JournalList.FirstOrDefault().Entry" class="p-2"></label>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.JournalList)
+                    {
+
+                        <tr>
+                            <td class="p-2">
+                                @Html.DisplayFor(m => item.EntryName)
+                            </td>
+                            <td class="p-2">
+                                @Html.DisplayFor(m => item.Date)
+                            </td>
+                            <td class="p-2">
+                                @Html.DisplayFor(m => item.Entry)
+                            </td>
+                            <td class="p-2">
+                                <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Are you Sure?')">Delete</button>
+                                <a asp-route-id="@item.Id" asp-page="Edit" class="btn btn-success ml-2">Edit</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+
+                </table>
+            }
+            else
+            {
+                <p class="text-danger">Nothing to Show</p>
+            }
+        </form>
+    </div>
+</div>

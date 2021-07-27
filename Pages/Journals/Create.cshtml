@@ -1,0 +1,59 @@
+﻿@page
+@model Journal.Pages.Journals.CreateModel
+@{
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-info">Create New Journal</h1>
+    </div>
+
+    <div class="container border p-3 m-3">
+        <div asp-validation-summary="ModelOnly"></div>
+        <form method="post">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="JournalList.EntryName"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="JournalList.EntryName" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="JournalList.EntryName"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="JournalList.Date"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="JournalList.Date" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="JournalList.Date"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="JournalList.Entry"></label>
+                </div>
+                <div class="col-6">
+                    @Html.TextAreaFor(m => m.JournalList.Entry, new { @class = "form-control", @rows = 4 })
+                </div>
+                <span class="text-danger" asp-validation-for="JournalList.Entry"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-6 offset-4">
+                    <input class="btn btn-primary form-control" type="submit" value="Create" />
+                </div>
+                <div class="col-6 offset-4 mt-2">
+                    <a class="btn btn-success form-control" asp-page="Index">Back to Home</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!--Client side validation-->
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial" />
+}

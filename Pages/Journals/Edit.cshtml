@@ -1,0 +1,58 @@
+﻿@page
+@model Journal.Pages.Journals.EditModel
+@{
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-info">Edit Page</h1>
+    </div>
+
+    <div class="container border p-3 m-3">
+        <div asp-validation-summary="ModelOnly"></div>
+        <form method="post">
+            <div class="form-group row">
+                <input asp-for="JournalList.Id" hidden/>
+                <div class="col-4">
+                    <label asp-for="JournalList.EntryName"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="JournalList.EntryName" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="JournalList.EntryName"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="JournalList.Date"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="JournalList.Date" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="JournalList.Date"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="JournalList.Entry"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="JournalList.Entry" class="form-control" />
+                </div>
+                <span class="text-danger" asp-validation-for="JournalList.Entry"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6 offset-4">
+                    <input type="submit" class="btn btn-success form-control" value="Submit" />
+                </div>
+                <div class="col-6 offset-4 mt-2">
+                    <a asp-page="Index" class="btn btn-danger form-control">Go to Home</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial" />
+}
